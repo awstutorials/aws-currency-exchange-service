@@ -24,7 +24,7 @@ Parameters:
   # name of your microservice
   MicroServiceName:
     Type: String
-    Default: ravi13jullimitms
+    Default: awscurrencyexchange
 
   #pass down to service.yaml
   VpcId:
