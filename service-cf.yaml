@@ -39,7 +39,7 @@ Resources:
   AppLogGroup:
     Type: "AWS::Logs::LogGroup"
     Properties:
-      LogGroupName: limitsnewloggroup
+      LogGroupName: currencyexchangesnewloggroup
 #### your micro service
   Service:
     Type: AWS::ECS::Service
@@ -104,11 +104,11 @@ Resources:
           Matcher:
               HttpCode: 200-299
           HealthCheckIntervalSeconds: 120
-          HealthCheckPath: "/api/limits/manage/health/"
+          HealthCheckPath: "/api/currency-exchange/manage/health/"
           HealthCheckProtocol: HTTP
           HealthCheckTimeoutSeconds: 60
           HealthyThresholdCount: 2
-          Name: "limitsservice"
+          Name: "currencyexchangeservice"
           Port: !Ref 'ContainerPort'
   ListenerRule:
       Type: AWS::ElasticLoadBalancingV2::ListenerRule
