@@ -93,6 +93,24 @@ Resources:
           Environment:
             - Name: AWS_Region
               Value: !Sub ${AWS::Region}
+        - Name: xraysidecar
+          Image: amazon/aws-xray-daemon:1
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-region: !Sub ${AWS::Region}
+              awslogs-group: !Ref AppLogGroup
+              # awslogs-stream-prefix: !Sub ${ECRImageTag}-${ECRRepository}
+              awslogs-stream-prefix: xrayecs
+          Essential: true
+          Cpu: 0
+          PortMappings:
+            - ContainerPort: !Ref ContainerPort
+              protocol: udp
+              hostPort: 2000
+          Environment:
+            - Name: AWS_Region
+              Value: !Sub ${AWS::Region}
 
   TargetGroup:
       Type: AWS::ElasticLoadBalancingV2::TargetGroup
