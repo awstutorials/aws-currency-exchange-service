@@ -28,7 +28,7 @@ Parameters:
     Type: String
   Role:
     Type: String
-    Default: ""
+    Default: arn:aws:iam::182388080935:role/ecstaskrole
     Description: (Optional) An IAM role to give the service's containers if the code within needs to
                  access other AWS resources like S3 buckets, DynamoDB tables, etc
 
