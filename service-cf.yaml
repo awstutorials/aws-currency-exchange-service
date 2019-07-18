@@ -105,7 +105,7 @@ Resources:
           Essential: true
           Cpu: 0
           PortMappings:
-            - ContainerPort: !Ref ContainerPort
+            - ContainerPort: 2000
               Protocol: udp
               HostPort: 2000
           Environment:
