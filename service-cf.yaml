@@ -106,8 +106,8 @@ Resources:
           Cpu: 0
           PortMappings:
             - ContainerPort: !Ref ContainerPort
-              protocol: udp
-              hostPort: 2000
+              Protocol: udp
+              HostPort: 2000
           Environment:
             - Name: AWS_Region
               Value: !Sub ${AWS::Region}
