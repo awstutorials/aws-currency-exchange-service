@@ -104,7 +104,8 @@ Resources:
       NetworkMode: awsvpc
       RequiresCompatibilities:
         - FARGATE
-      TaskRoleArn: !Ref TaskDefinitionServiceRole
+      #TaskRoleArn: !Ref TaskDefinitionServiceRole arn:aws:iam::182388080935:role/ecstaskrole
+      TaskRoleArn: arn:aws:iam::182388080935:role/ecstaskrole
       ContainerDefinitions:
         - Name: !Sub ${ECRRepository}
           Image: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${ECRRepository}:${ECRImageTag}
