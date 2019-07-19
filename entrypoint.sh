@@ -1,6 +1,11 @@
 #!/bin/sh
 
-export MINIMUM=$(aws ssm get-parameter --region eu-west-1 --name ${MINIMUM_PARAM_NAME} | jq -r .Parameter.Value)
-export MAXIMUM=$(aws ssm get-parameter --region eu-west-1 --name ${MAXIMUM_PARAM_NAME} | jq -r .Parameter.Value)
+echo 'helloworld...'
+echo '*************'
+
+export ENV_DB_PASSWORD=$(aws ssm get-parameter --region eu-west-1 --name ${DB_PASS_PARAM_NAME} --with-decryption | jq -r .Parameter.Value)
+
+echo $ENV_DB_PASSWORD
+echo '*************'
 
 java -jar application.jar

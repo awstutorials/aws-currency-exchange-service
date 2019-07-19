@@ -32,12 +32,9 @@ Parameters:
     Description: (Optional) An IAM role to give the service's containers if the code within needs to
                  access other AWS resources like S3 buckets, DynamoDB tables, etc
 
-  MinimumParameterName:
+  DataBasePasswordParameterName:
     Type: String
-    Default: "/ravi/minimum_param"
-  MaximumParameterName:
-    Type: String
-    Default: "/ravi/maximum_param"
+    Default: "/ravi/dbpass"
 
 Conditions:
   HasCustomRole: !Not [ !Equals [!Ref 'Role', ''] ]
@@ -126,10 +123,8 @@ Resources:
           Environment:
             - Name: AWS_Region
               Value: !Sub ${AWS::Region}
-            - Name: MINIMUM_PARAM_NAME
-              Value: !Ref MinimumParameterName
-            - Name: MAXIMUM_PARAM_NAME
-              Value: !Ref MaximumParameterName
+            - Name: DB_PASS_PARAM_NAME
+              Value: !Ref DataBasePasswordParameterName
         - Name: xraysidecar
           Image: amazon/aws-xray-daemon:1
           LogConfiguration:
